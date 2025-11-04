@@ -1,9 +1,14 @@
-export enum SiteRoutes {
-  HOME = '/',
-  PROFILE = '/profile',
-}
+export const SiteRoutes = {
+  HOME: '/',
+  PROFILE: '/profile',
+  SIGN_IN: '/sign-in',
+  SIGN_UP: '/sign-up',
+} as const
 
-export enum ApiRoutes {
-  PRODUCTS = '/products',
-  CATEGORIES = '/categories',
-}
+export type SiteRoute = (typeof SiteRoutes)[keyof typeof SiteRoutes]
+
+export const ApiRoutes = {
+  PRODUCTS: '/products',
+} as const
+
+export type ApiRoute = (typeof ApiRoutes)[keyof typeof ApiRoutes]

@@ -20,8 +20,10 @@ const NAV_LINKS = [
   { href: SiteRoutes.HOME, label: 'Соусы' },
 ]
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DROPDOWN_LINKS = [
+  { href: SiteRoutes.HOME, label: 'Коктейли' },
+  { href: SiteRoutes.HOME, label: 'Десерты' },
+  { href: SiteRoutes.HOME, label: 'Соусы' },
   { href: SiteRoutes.HOME, label: 'Другие товары' },
   { href: SiteRoutes.HOME, label: 'Новинки' },
   { href: SiteRoutes.HOME, label: 'Завтрак' },
@@ -46,22 +48,20 @@ export function NavigationBar() {
           <Button
             variant='secondary'
             size='sm'
-            className='hover:text-primary hover:bg-foreground/5 flex items-center gap-1 font-sans leading-none'
+            className='hover:text-primary hover:bg-foreground/5 flex items-center gap-1 px-1 font-sans leading-none'
           >
             <span className='align-middle'>Ещё</span>
             <ChevronDown className='relative top-[0.6px] size-4 align-middle' />
           </Button>
         </HoverCardTrigger>
-        <HoverCardContent>
-          <div className='flex justify-between gap-4 bg-gray-100'>
-            <div className='space-y-1'>
-              <h4 className='text-sm font-semibold'>@nextjs</h4>
-              <p className='text-sm'>
-                The React Framework – created and maintained by @vercel.
-              </p>
-              <div className='text-muted-foreground text-xs'>Joined December 2021</div>
-            </div>
-          </div>
+        <HoverCardContent align='start' className='w-auto py-2 pr-10 pl-3 shadow-sm'>
+          <ul className='flex flex-col gap-2 text-sm'>
+            {DROPDOWN_LINKS.map(link => (
+              <li key={link.label}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
         </HoverCardContent>
       </HoverCard>
     </nav>
