@@ -6,6 +6,8 @@ import Link from 'next/link'
 
 import { Button } from '@/components/shared/button'
 
+import { CoinIcon } from '../icons/coin-icon'
+
 import { NavigationBar } from './navigation-bar'
 import { SiteRoutes } from '@/constants/routes'
 
@@ -42,15 +44,11 @@ export function SiteHeader() {
         </section>
 
         <section className='flex items-center gap-6'>
-          <div className='flex flex-col items-center gap-1'>
-            <Image
-              src='/coin.svg'
-              alt='Додокоины'
-              width={28}
-              height={28}
-              className='text-foreground'
-            />
-            <span className='text-foreground text-sm font-semibold'>Додокоины</span>
+          <div className='group flex cursor-pointer flex-col items-center'>
+            <CoinIcon />
+            <span className='group-hover:text-primary text-sm font-semibold transition-colors duration-150 ease-in-out'>
+              Додокоины
+            </span>
           </div>
 
           <Button variant='secondary' size='sm' className='px-4'>
