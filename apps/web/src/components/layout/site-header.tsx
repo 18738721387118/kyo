@@ -6,14 +6,14 @@ import Link from 'next/link'
 
 import { Button } from '@/components/shared/button'
 
-import { CoinIcon } from '../icons/coin-icon'
+import { CoinIcon } from '../shared/icons/coin-icon'
 
 import { NavigationBar } from './navigation-bar'
 import { SiteRoutes } from '@/constants/routes'
 
 export function SiteHeader() {
   return (
-    <header className='bg-background sticky top-0 z-50 w-full'>
+    <header className='bg-background sticky top-0 z-50 mb-3 w-full'>
       <div className='flex justify-between gap-8 py-8'>
         <section className='flex items-start gap-8'>
           <div className='flex flex-col'>
