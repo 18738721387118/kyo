@@ -5,7 +5,7 @@ import { IS_DEV_ENV } from './common/utils'
 import { MailModule } from './infra/mail/mail.module'
 import { PrismaModule } from './infra/prisma/prisma.module'
 import { AuthModule } from './modules/auth/auth.module'
-import { EmailConfirmationModule } from './modules/auth/email-confirmation/email-confirmation.module'
+import { PasswordRecoveryModule } from './modules/auth/password-recovery/password-recovery.module'
 import { UserModule } from './modules/user/user.module'
 
 @Module({
@@ -24,6 +24,7 @@ import { UserModule } from './modules/user/user.module'
     // Modules
     AuthModule,
     UserModule,
+    PasswordRecoveryModule,
   ],
 })
 export class AppModule {}

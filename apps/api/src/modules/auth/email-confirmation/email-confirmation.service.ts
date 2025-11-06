@@ -8,7 +8,6 @@ import {
 import { ConfigService } from '@nestjs/config'
 import type { Response } from 'express'
 import { TokenType } from 'prisma/generated/client'
-import { User } from 'prisma/generated/client'
 import { v4 as uuidv4 } from 'uuid'
 
 import { toMs } from '@/common/utils'
@@ -36,6 +35,7 @@ export class EmailConfirmationService {
       'EMAIL_CONFIRMATION_TOKEN_TTL',
     )
   }
+
   async newVerification(res: Response, dto: ConfirmationRequest) {
     const token = await this.prismaService.token.findFirst({
       where: {
