@@ -78,7 +78,7 @@ export class TwoFactorAuthService {
       data: {
         email,
         token,
-        type: TokenType.VERIFICATION,
+        type: TokenType.TWO_FACTOR,
         expiresIn,
       },
     })
