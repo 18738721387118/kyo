@@ -18,6 +18,7 @@ import { UserService } from '../user/user.service'
 import { LoginRequest, RegisterRequest } from './dto'
 import { EmailConfirmationService } from './email-confirmation/email-confirmation.service'
 import { OAuthService } from './oauth/oauth.service'
+import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service'
 import { JwtPayload } from './types'
 
 @Injectable()
@@ -34,6 +35,7 @@ export class AuthService {
     private readonly oauthService: OAuthService,
     private readonly prismaService: PrismaService,
     private readonly emailConfirmationService: EmailConfirmationService,
+    private readonly twoFactorAuthService: TwoFactorAuthService,
   ) {
     this.JWT_ACCESS_TOKEN_TTL = configService.getOrThrow<string>('JWT_ACCESS_TOKEN_TTL')
     this.JWT_REFRESH_TOKEN_TTL = configService.getOrThrow<string>('JWT_REFRESH_TOKEN_TTL')
@@ -74,6 +76,16 @@ export class AuthService {
 
     if (!user.isVerified) {
       throw new UnauthorizedException('Please verify your email')
+    }
+
+    if (user.isTwoFactorEnabled) {
+      if (!dto.code) {
+        await this.twoFactorAuthService.sendTwoFactorToken(user.email)
+
+        return { message: 'Please enter the code sent to your email' }
+      }
+
+      await this.twoFactorAuthService.validateTwoFactorToken(user.email, dto.code)
     }
 
     return this.auth(res, user.id)

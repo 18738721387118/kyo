@@ -5,7 +5,6 @@ import { PassportModule } from '@nestjs/passport'
 import { GoogleRecaptchaModule } from '@nestlab/google-recaptcha'
 
 import { getJwtConfig, getOAuthConfig, getRecaptchaConfig } from '@/config'
-import { MailService } from '@/infra/mail/mail.service'
 
 import { UserService } from '../user/user.service'
 
@@ -14,6 +13,8 @@ import { AuthService } from './auth.service'
 import { EmailConfirmationModule } from './email-confirmation/email-confirmation.module'
 import { OAuthModule } from './oauth/oauth.module'
 import { JwtStrategy } from './strategies/jwt.strategy'
+import { TwoFactorAuthModule } from './two-factor-auth/two-factor-auth.module'
+import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service'
 
 @Module({
   imports: [
@@ -36,7 +37,7 @@ import { JwtStrategy } from './strategies/jwt.strategy'
     forwardRef(() => EmailConfirmationModule),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, UserService],
+  providers: [AuthService, JwtStrategy, UserService, TwoFactorAuthService],
   exports: [AuthService],
 })
 export class AuthModule {}

@@ -1,5 +1,16 @@
-import { PartialType } from '@nestjs/mapped-types'
+import { IsBoolean, IsEmail, IsNotEmpty, IsString, Length } from 'class-validator'
 
-import { CreateUserRequest } from './create-user.request'
+export class UpdateUserRequest {
+  @IsString()
+  @IsNotEmpty()
+  @Length(3, 32)
+  name: string
 
-export class UpdateUserRequest extends PartialType(CreateUserRequest) {}
+  @IsEmail()
+  @IsNotEmpty()
+  @IsString()
+  email: string
+
+  @IsBoolean()
+  isTwoFactorEnabled: boolean
+}

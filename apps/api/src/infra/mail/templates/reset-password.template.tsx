@@ -21,7 +21,7 @@ export function ResetPasswordTemplate({ domain, token }: ResetPasswordTemplatePr
           <Link href={resetLink}>Подтвердить сброс пароля</Link>
           <Text>
             Эта ссылка действительна в течение 1 часа. Если Вы не запрашивали подтверждение,
-            просто проигнорируй это сообщение.
+            просто проигнорируйте это сообщение.
           </Text>
         </Body>
       </Html>

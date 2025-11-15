@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Param, Post, Query } from '@nestjs/common'
+import { Body, Controller, HttpCode, HttpStatus, Param, Post } from '@nestjs/common'
 import { Recaptcha } from '@nestlab/google-recaptcha'
 
 import { NewPasswordRequest, ResetPasswordRequest } from './dto'

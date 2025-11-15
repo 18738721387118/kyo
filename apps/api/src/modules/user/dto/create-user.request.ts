@@ -17,6 +17,8 @@ export class CreateUserRequest {
   name: string
 
   @IsEmail()
+  @IsNotEmpty()
+  @IsString()
   email: string
 
   @IsString()
