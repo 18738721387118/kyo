@@ -12,10 +12,10 @@ _Package manager_: `bun`
 
 ## Structure
 
-| Codebase |  Description  |
-| :------- | :-----------: |
-| apps/api |  NestJS API   |
-| apps/web | NextJS Client |
+| Codebase |  Description   |
+| :------: | :------------: |
+| apps/api |   NestJS API   |
+| apps/web | Next.js Client |
 
 ## License
 
