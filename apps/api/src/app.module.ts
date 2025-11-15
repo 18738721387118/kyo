@@ -9,6 +9,7 @@ import { EmailConfirmationModule } from './modules/auth/email-confirmation/email
 import { OAuthModule } from './modules/auth/oauth/oauth.module'
 import { PasswordRecoveryModule } from './modules/auth/password-recovery/password-recovery.module'
 import { TwoFactorAuthModule } from './modules/auth/two-factor-auth/two-factor-auth.module'
+import { CronModule } from './modules/cron/cron.module'
 import { UserModule } from './modules/user/user.module'
 
 @Module({
@@ -26,11 +27,12 @@ import { UserModule } from './modules/user/user.module'
 
     // Modules
     AuthModule,
-    UserModule,
-    PasswordRecoveryModule,
-    OAuthModule,
+    CronModule,
     EmailConfirmationModule,
+    OAuthModule,
+    PasswordRecoveryModule,
     TwoFactorAuthModule,
+    UserModule,
   ],
 })
 export class AppModule {}
