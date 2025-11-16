@@ -46,7 +46,7 @@ export class AuthController {
 
   @UseGuards(AuthProviderGuard)
   @Get('/oauth/callback/:provider')
-  public async callback(
+  async callback(
     @Res({ passthrough: true }) res: Response,
     @Query('code') code: string,
     @Param('provider') provider: string,

@@ -18,7 +18,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe(getValidationPipeConfig()))
 
-  app.setGlobalPrefix('api/v1')
+  app.setGlobalPrefix('api')
 
   setupSwagger(app)
 

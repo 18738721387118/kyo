@@ -10,9 +10,9 @@ import { OAuthService } from '../oauth/oauth.service'
 
 @Injectable()
 export class AuthProviderGuard implements CanActivate {
-  public constructor(private readonly oauthService: OAuthService) {}
+  constructor(private readonly oauthService: OAuthService) {}
 
-  public canActivate(context: ExecutionContext) {
+  canActivate(context: ExecutionContext) {
     const request = context.switchToHttp().getRequest<Request>()
 
     const provider = request.params.provider
