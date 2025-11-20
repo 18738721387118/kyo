@@ -17,9 +17,11 @@ import { ConfigService } from '@nestjs/config'
 import { Recaptcha } from '@nestlab/google-recaptcha'
 import type { Request, Response } from 'express'
 
+import { OAuth } from '@/common/decorators'
+
 import { AuthService } from './auth.service'
 import { LoginRequest, RegisterRequest } from './dto'
-import { AuthProviderGuard } from './guards'
+import { OAuthGuard } from './guards'
 import { OAuthService } from './oauth/oauth.service'
 
 @Controller('auth')
@@ -44,7 +46,7 @@ export class AuthController {
     return await this.authService.login(res, dto)
   }
 
-  @UseGuards(AuthProviderGuard)
+  @OAuth()
   @Get('/oauth/callback/:provider')
   async callback(
     @Res({ passthrough: true }) res: Response,
@@ -62,7 +64,7 @@ export class AuthController {
     )
   }
 
-  @UseGuards(AuthProviderGuard)
+  @UseGuards(OAuthGuard)
   @Get('oauth/connect/:provider')
   @HttpCode(HttpStatus.OK)
   async connect(@Param('provider') provider: string) {
