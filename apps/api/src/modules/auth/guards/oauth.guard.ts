@@ -9,7 +9,7 @@ import { Request } from 'express'
 import { OAuthService } from '../oauth/oauth.service'
 
 @Injectable()
-export class AuthProviderGuard implements CanActivate {
+export class OAuthGuard implements CanActivate {
   constructor(private readonly oauthService: OAuthService) {}
 
   canActivate(context: ExecutionContext) {

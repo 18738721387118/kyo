@@ -1,3 +1,3 @@
 export * from './jwt-auth.guard'
-export * from './provider.guard'
+export * from './oauth.guard'
 export * from './roles.guard'
