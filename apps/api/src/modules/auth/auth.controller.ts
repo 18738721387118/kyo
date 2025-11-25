@@ -36,14 +36,14 @@ export class AuthController {
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   async register(@Body() dto: RegisterRequest) {
-    return await this.authService.register(dto)
+    return this.authService.register(dto)
   }
 
   @Recaptcha()
   @Post('login')
   @HttpCode(HttpStatus.OK)
   async login(@Res({ passthrough: true }) res: Response, @Body() dto: LoginRequest) {
-    return await this.authService.login(res, dto)
+    return this.authService.login(res, dto)
   }
 
   @OAuth()
@@ -82,12 +82,12 @@ export class AuthController {
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   async refresh(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-    return await this.authService.refresh(req, res)
+    return this.authService.refresh(req, res)
   }
 
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   async logout(@Res({ passthrough: true }) res: Response) {
-    return await this.authService.logout(res)
+    return this.authService.logout(res)
   }
 }

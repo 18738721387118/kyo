@@ -1,4 +1,5 @@
 import { Processor, WorkerHost } from '@nestjs/bullmq'
+import { Logger } from '@nestjs/common'
 import { Job } from 'bullmq'
 
 import { MAIL_QUEUE_NAME } from '@/common/constants'
@@ -8,6 +9,8 @@ import { MailJob } from './types'
 
 @Processor(MAIL_QUEUE_NAME)
 export class MailProcessor extends WorkerHost {
+  private readonly logger = new Logger(MailProcessor.name)
+
   constructor(private readonly mailService: MailService) {
     super()
   }
@@ -20,10 +23,13 @@ export class MailProcessor extends WorkerHost {
         job.data.subject,
         job.data.html,
       )
-      console.log(`Mail sent successfully to ${job.data.to}`)
+
+      this.logger.log(`Mail sent successfully to ${job.data.to}`)
+
       return result
     } catch (error) {
-      console.error(`Failed to send mail to ${job.data.to}:`, error)
+      this.logger.error(`Failed to send mail to ${job.data.to}:`, error)
+
       throw error
     }
   }
